@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,17 +27,17 @@ class Nota extends Model
 
     protected $casts = [
         'tanggal_nota' => 'date',
-        'total' => 'decimal:2',
         'verified_at' => 'datetime',
+        'total' => 'decimal:2',
     ];
-
-    public function items(): HasMany
-    {
-        return $this->hasMany(NotaItem::class);
-    }
 
     public function uploader(): BelongsTo
     {
         return $this->belongsTo(User::class, 'uploaded_by');
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(NotaItem::class);
     }
 }
